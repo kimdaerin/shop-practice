@@ -16,7 +16,7 @@ router.get("/goods/cart", async (req, res) => {
   console.log(goods);
 
   res.json({
-      carts: carts.map((cart)=> {
+      cart: carts.map((cart)=> {
           return {
               quantity: cart.quantity,
               goods: goods.find((item) => item.goodsId === cart.goodsId), 
@@ -37,27 +37,15 @@ router.get("/goods", async (req, res) => {
 router.get("/goods/:goodsId", async (req, res) => {
     const {goodsId}= req.params;
 
-    const [detail] = await Goods.find({ goodsId: Number(goodsId) });
+    const [goods] = await Goods.find({ goodsId: Number(goodsId) });
 
 
     res.json({
-        detail,
+        goods,
     });
 });
 
-router.post("/goods/:goodsId/cart", async (req,res) => {
-    const {goodsId} = req.params;
-    const { quantity } = req.body;
 
-    const existsCarts = await Cart.find({ goodsId : Number(goodsId)});
-
-    if(existsCarts.length){
-      return res.status(400).json({ success: false, errorMessage: "이미 장바구니에 들어있는 상품입니다."});
-    }
-
-    await Cart.create({goodsId: Number(goodsId), quantity});
-    res.json({ success: true});
-});
 
 router.delete("/goods/:goodsId/cart", async (req,res) => {
   const {goodsId} = req.params;
@@ -71,24 +59,18 @@ router.delete("/goods/:goodsId/cart", async (req,res) => {
   res.json({ success: true});
 });
 
-router.put("/goods/:goodsId/cart", async (req,res) => {
+router.put("/goods/:goodsId/cart", async (req, res) => {
   const { goodsId } = req.params;
   const { quantity } = req.body;
 
-  if(quantity < 1){
-    return res.status(400).json({ success: false, errorMessage: "해당 수량은 담을수없습니다"});
+  const existsCarts = await Cart.find({ goodsId: Number(goodsId) });
+  if (!existsCarts.length) {
+    await Cart.create({ goodsId: Number(goodsId), quantity });
+  } else {
+    await Cart.updateOne({ goodsId: Number(goodsId) }, { $set: { quantity } });
   }
 
-  const existsCarts = await Cart.find({ goodsId : Number(goodsId)});
-
-  if(!existsCarts.length){
-    return res.status(400).json({ success: false, errorMessage: "장바구니에 해당 상품이 없습니다."});
-  }
-
-
-
-  await Cart.updateOne({ goodsId: Number(goodsId)}, { $set: { quantity }});
-  res.json({ success: true});
+  res.json({ success: true });
 });
 
 router.post("/goods", async (req, res) => {
@@ -110,3 +92,9 @@ router.post("/goods", async (req, res) => {
 });
 
 module.exports = router; //모듈로서 내보내겠다
+
+
+
+
+
+
