@@ -3,18 +3,197 @@
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <title>스파르타 쇼핑몰</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/typeit@8.3.3/dist/index.umd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+
+    <!-- 스타일 시작 -->
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      .item {
+        width: 250px;
+        height: 200px;
+        margin: 50px auto;
+        padding-top: 75px;
+        background: rgba(255,85,0, .7);
+        text-align: center;
+        color: #4E4C48;
+        font-size: 1.5em;
+      }
+      
+      /* typeit 설정 */
+      :root {
+        --ti-cursor-margin-left: 0.1em;
+        --ti-cursor-color: dodgerblue;
+      }
+
+      h1 {
+        margin-bottom: 0px;
+      }
+
+      /* anime 설정 */
+      button {
+        background: orange;
+        color: white;
+        margin: 5px;
+        padding: 10px;
+        border-radius: 4px;
+        font-family: 'Lato';
+        cursor: pointer;
+        border: none;
+        outline: none;
+      }
+
+      button:hover {
+        background: blue;
+      }
+
+      .square {
+        pointer-events: none;
+        position: relative;
+        width: 50px;
+        height: 50px;
+        background-color: cornflowerblue;
+        margin: 4px;
+        display: inline-block;
+      }
+
+      .blue {
+        background: blue;
+      }
+
+      .red {
+        background: red;
+      }
+
+      .black {
+        background: black;
+      }
+
+      .controls {
+        margin-top: 250px;
+      }
+
+      body {
+      margin: 20px;
+      font-family: 'Lato';
+      font-weight: 300;
+      text-align: center;
+      font-size: 1.2em;
+    }
+
+    </style>
   </head>
 
+
+  <!-- body시작 -->
   <body>
-    <script>
-      window.location.replace("/goods.html");
+
+    <h1 id="title">프론트엔드 공부중...</h1>
+
+
+
+    <div class="item" data-aos="fade-left" data-aos-anchor="#example-anchor" data-aos-offset="500" data-aos-duration="500">fade-left</div>
+    <div class="item" data-aos="slide-right" data-aos-easing="ease-in-back" data-aos-delay="300" data-aos-offset="0">fade-zoom-in</div>
+    <div class="item" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">flip-left</div>
+
+    <h1>ANCHOR PLACEMENT</h1>
+    <div class="item" data-aos="fade-up" data-aos-anchor-placement="top-bottom">fade-up top-bottom</div>
+    <div class="item" data-aos="fade-up" data-aos-anchor-placement="center-bottom">fade-up center-bottom</div>
+    <div class="item" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">fade-up bottom-bottom</div>
+    <div class="item" data-aos="fade-up" data-aos-anchor-placement="top-center">fade-up top-center</div>
+    <div class="item" data-aos="fade-up" data-aos-anchor-placement="center-center">fade-up center-center</div>
+    <div class="item" data-aos="fade-up" data-aos-anchor-placement="bottom-center">fade-up bottom-center</div>
+
+
+
+
+
+    <div id="anime-demo">
+      <div class="line">
+        <div class="square blue"></div>
+        <div class="square red"></div>
+        <div class="square black"></div>
+        <div class="square blue"></div>
+        <div class="square red"></div>
+        <div class="square black"></div>
+        <div class="square blue"></div>
+        <div class="square red"></div>
+        <div class="square black"></div>
+      </div>
+    </div>
+    <div class="controls">
+    <button class="play-blue">Animate Blue</button>
+    <button class="play-red-blue">Animate Red and Blue</button>
+    <button class="play-even">Animate Even</button>
+    <button class="play-not-red">Animate Non-Red Elements</button></div>
+   
+
+    <svg preserveAspectRatio="xMidYMid meet" data-bbox="10 10 62 62" viewBox="0 0 82 82" height="82" width="82" xmlns="http://www.w3.org/2000/svg" data-type="color" role="presentation" aria-hidden="true" aria-labelledby="svgcid-fwqw8mc0c3b1"><defs><style>#comp-kebl0af9 svg [data-color="1"] {fill: #000000;}</style></defs><title id="svgcid-fwqw8mc0c3b1"></title>
+      <g>
+          <path d="M41 10c-17.121 0-31 13.879-31 31 0 17.121 13.879 31 31 31 17.121 0 31-13.879 31-31 0-17.121-13.879-31-31-31zm2.008 35.268l-7.531 4.268V32.465l7.531 4.268L50.539 41l-7.531 4.268z" fill="#2B328C" data-color="1"></path>
+      </g>
+    </svg>
+
+
+    <!-- script 시작 -->
+   <script>
+        AOS.init({
+          duration: 1000
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+        new TypeIt('#title') //
+          .pause(1000)
+          .delete(7, { delay: 1000 })
+          .type('가 백엔드보다 좋을지도?')
+          .pause(1000)
+          .delete(18, { delay: 1000 })
+          .type('...아닌가?')
+
+          .go();
+      });
+
+      var blue = anime({
+        targets: '.blue',
+        translateY: 200,
+        autoplay: false
+      });
+
+      var redBlue = anime({
+        targets: '.red, .blue',
+        translateY: 200,
+        autoplay: false
+      });
+
+      var even = anime({
+        targets: '.square:nth-child(even)',
+        translateY: 200,
+        autoplay: false
+      });
+
+      var notRed = anime({
+        targets: '.square:not(.red)',
+        translateY: 200,
+        autoplay: false
+      });
+
+      document.querySelector('.play-blue').onclick = blue.restart;
+
+      document.querySelector('.play-red-blue').onclick = redBlue.restart;
+
+      document.querySelector('.play-even').onclick = even.restart;
+
+      document.querySelector('.play-not-red').onclick = notRed.restart;
+
+
+
     </script>
   </body>
 </html>
