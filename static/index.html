@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/typeit@8.3.3/dist/index.umd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script async src="main.js"></script>
+  </head>
+
+  <!-- body시작 -->
+  <body>
+
+    <h1 id="title">프론트엔드 공부중...</h1>
+
+
+
+    <div class="item" data-aos="fade-left" data-aos-anchor="#example-anchor" data-aos-offset="500" data-aos-duration="500">fade-left</div>
+    <div class="item" data-aos="slide-right" data-aos-easing="ease-in-back" data-aos-delay="300" data-aos-offset="0">fade-zoom-in</div>
+    <div class="item" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">flip-left</div>
+
+    <h1>ANCHOR PLACEMENT</h1>
+    <div class="item" data-aos="fade-up" data-aos-anchor-placement="top-bottom">fade-up top-bottom</div>
+    <div class="item" data-aos="fade-up" data-aos-anchor-placement="center-bottom">fade-up center-bottom</div>
+    <div class="item" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">fade-up bottom-bottom</div>
+    <div class="item" data-aos="fade-up" data-aos-anchor-placement="top-center">fade-up top-center</div>
+    <div class="item" data-aos="fade-up" data-aos-anchor-placement="center-center">fade-up center-center</div>
+    <div class="item" data-aos="fade-up" data-aos-anchor-placement="bottom-center">fade-up bottom-center</div>
+
+
+
+
+
+    <div id="anime-demo">
+      <div class="line">
+        <div class="square blue"></div>
+        <div class="square red"></div>
+        <div class="square black"></div>
+        <div class="square blue"></div>
+        <div class="square red"></div>
+        <div class="square black"></div>
+        <div class="square blue"></div>
+        <div class="square red"></div>
+        <div class="square black"></div>
+      </div>
+    </div>
+    <div class="controls">
+    <button class="play-blue">Animate Blue</button>
+    <button class="play-red-blue">Animate Red and Blue</button>
+    <button class="play-even">Animate Even</button>
+    <button class="play-not-red">Animate Non-Red Elements</button></div>
+  
+  </body>
+</html>
